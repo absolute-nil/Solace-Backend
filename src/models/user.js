@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
         ret.id = ret._id;
         delete ret._id;
         delete ret.password;
-        delete req.token;
+        delete ret.token;
         delete ret.__v;
       },
     },

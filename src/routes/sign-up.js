@@ -46,6 +46,10 @@ router.post(
       },
       process.env.JWT_KEY
     );
+
+    user.set('token', userJwt);
+
+    await user.save();
     res.status(201).send({ ...user.toJSON(), token: userJwt });
   }
 );

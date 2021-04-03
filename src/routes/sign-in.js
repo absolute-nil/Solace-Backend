@@ -40,6 +40,9 @@ router.post(
       process.env.JWT_KEY
     );
 
+    existingUser.set('token', userJwt);
+
+    await existingUser.save();
     res.status(200).send({ ...existingUser.toJSON(), token: userJwt });
   }
 );
