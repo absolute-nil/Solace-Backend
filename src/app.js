@@ -7,6 +7,9 @@ const currentUserRouter = require('./routes/current-user');
 const signInRouter = require('./routes/sign-in');
 const signUpRouter = require('./routes/sign-up');
 const signOutRouter = require('./routes/sign-out');
+const publishBlogRouter = require('./routes/publish-blog');
+const getBlogsRouter = require('./routes/get-all-blogs');
+const likeBlogRouter = require('./routes/like-blog');
 
 // error
 const { errorHandler } = require('./middleware/error-handler');
@@ -29,6 +32,9 @@ app.use('/api/users/me', currentUserRouter);
 app.use('/api/users/sign-in', signInRouter);
 app.use('/api/users/sign-out', signOutRouter);
 app.use('/api/users/sign-up', signUpRouter);
+app.use('/api/blogs/publish', publishBlogRouter);
+app.use('/api/blogs', getBlogsRouter);
+app.use('/api/blogs/like/:blogId', likeBlogRouter);
 
 // if route does not exist
 app.all('*', async () => {
