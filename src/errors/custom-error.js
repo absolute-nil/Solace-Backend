@@ -1,4 +1,4 @@
-module.exports = class CustomError extends Error {
+class CustomError extends Error {
   statusCode;
 
   constructor(message, statusCode = 400) {
@@ -14,4 +14,6 @@ module.exports = class CustomError extends Error {
       },
     ];
   }
-};
+}
+
+module.exports = { CustomError };
