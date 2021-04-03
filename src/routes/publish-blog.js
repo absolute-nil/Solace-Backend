@@ -14,10 +14,7 @@ router.post(
   [
     body('title').not().isEmpty().withMessage('title must be valid'),
     body('status').not().isEmpty().withMessage('status must be present'),
-    body('description')
-      .not()
-      .isEmpty()
-      .withMessage('description must be present'),
+    body('body').not().isEmpty().withMessage('body must be present'),
   ],
   validateRequest,
   async (req, res) => {
