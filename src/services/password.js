@@ -3,7 +3,7 @@ const { promisify } = require('util');
 
 const scriptAsync = promisify(scrypt);
 
-module.exports = class Password {
+class Password {
   static async toHash(password) {
     const salt = randomBytes(8).toString('hex');
     const buf = await scriptAsync(password, salt, 64);
@@ -17,4 +17,6 @@ module.exports = class Password {
 
     return buf.toString('hex') === hashedPassword;
   }
-};
+}
+
+module.exports = { Password };
