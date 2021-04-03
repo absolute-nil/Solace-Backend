@@ -1,6 +1,7 @@
 const express = require('express');
 require('express-async-errors'); // to use throw in async functions
 const cookieSession = require('cookie-session');
+const cors = require('cors');
 
 //route handlers
 const currentUserRouter = require('./routes/current-user');
@@ -17,7 +18,8 @@ const { CustomError } = require('./errors/custom-error');
 const { currentUser } = require('./middleware/current-user');
 
 const app = express();
-app.set('trust proxy', true);
+app.use(cors());
+app.options('*', cors());
 
 app.use(express.json());
 app.use(
