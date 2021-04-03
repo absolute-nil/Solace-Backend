@@ -30,6 +30,7 @@ app.use(
     secure: false, //* for dev - process.env.NODE_ENV !== "test"
   })
 );
+app.use(currentUser);
 
 //routes
 app.use('/api/users/me', currentUserRouter);
@@ -47,6 +48,5 @@ app.all('*', async () => {
 
 // middleware
 app.use(errorHandler);
-app.use(currentUser);
 
 module.exports = { app };
