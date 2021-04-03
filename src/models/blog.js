@@ -15,6 +15,10 @@ const blogSchema = new mongoose.Schema(
       type: Date,
       default: new Date(),
     },
+    likes: {
+      type: Number,
+      default: 0,
+    },
     body: {
       type: String,
       required: true,

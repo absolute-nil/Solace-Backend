@@ -35,3 +35,5 @@ router.post(
     res.status(201).send(blog);
   }
 );
+
+module.exports = router;

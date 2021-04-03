@@ -7,7 +7,7 @@ const { Blog } = require('../models/blog');
 const router = express.Router();
 const { requireAuth } = require('../middleware/require-auth');
 
-router.patch('/:blogId', requireAuth, async (req, res) => {
+router.patch('/', requireAuth, async (req, res) => {
   const blogs = await Blog.findById(req.query.blogId);
 
   blogs.set('likes', blogs.get('likes') + 1);
