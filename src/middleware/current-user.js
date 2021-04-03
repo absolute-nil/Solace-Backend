@@ -3,11 +3,12 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models/user');
 
 const currentUser = async (req, res, next) => {
-  if (!req.session?.jwt) {
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+  if (!token) {
     return next();
   }
   try {
-    const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY);
+    const payload = jwt.verify(token, process.env.JWT_KEY);
     const user = await User.findById(payload.id);
     req.currentUser = user;
   } catch (e) {}

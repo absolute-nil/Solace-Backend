@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    token: {
+      type: String,
+    },
   },
   {
     toJSON: {
@@ -23,6 +26,7 @@ const userSchema = new mongoose.Schema(
         ret.id = ret._id;
         delete ret._id;
         delete ret.password;
+        delete req.token;
         delete ret.__v;
       },
     },

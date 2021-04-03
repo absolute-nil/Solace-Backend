@@ -40,12 +40,7 @@ router.post(
       process.env.JWT_KEY
     );
 
-    // store it on session
-    req.session = {
-      jwt: userJwt,
-    };
-
-    res.status(200).send(existingUser);
+    res.status(200).send({ ...existingUser.toJSON(), token: userJwt });
   }
 );
 
