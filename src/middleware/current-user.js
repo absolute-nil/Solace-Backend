@@ -8,7 +8,8 @@ const currentUser = async (req, res, next) => {
   }
   try {
     const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY);
-    req.currentUser = payload;
+    const user = await User.findById(payload.id);
+    req.currentUser = user;
   } catch (e) {}
 
   next();
