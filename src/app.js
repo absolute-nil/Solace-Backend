@@ -19,7 +19,10 @@ const { currentUser } = require('./middleware/current-user');
 
 const app = express();
 app.use(cors());
-app.options('*', cors());
+const options = {
+  origin: 'http://127.0.0.1:3000',
+};
+app.options(options, cors());
 
 app.set('trust proxy', true);
 
