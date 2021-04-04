@@ -50,7 +50,7 @@ const start = async () => {
     console.error(e);
   }
   const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log(`service running on port ${PORT}`);
   });
 };
